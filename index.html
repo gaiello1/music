@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Harmony</title>
+  <title>North Shore School of Music</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
   <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
@@ -28,16 +28,41 @@
   </nav>
 </head>
 
-<body>
-    <section class="hero" style="background: url('assets/music.jpg') center/cover no-repeat;">
-    <h2>North Shore School of Music</h2>
-  </section>
+<script>
+   let slideIndex = 1;
 
-  <section class="section" id="about">
-    <h3>About Us</h3>
-    <p>
-      Studio Harmony is a professional music recording and production studio located in the heart of the city. With top-of-the-line equipment and a team of experienced sound engineers, we bring your musical vision to life.
-    </p>
+window.onload = function () {
+  showSlides(slideIndex);
+};
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+    </script>
+
+<body>
+  <section class="hero" style="background: url('assets/music.jpg') center/cover no-repeat;">
+    <h2>North Shore School of Music</h2>
   </section>
 
   <section class="section" id="services">
@@ -52,17 +77,41 @@
     <p>
       Explore our state-of-the-art rooms, vintage equipment, and behind-the-scenes moments from some of our favorite sessions.
     </p>
-  </section>
 
-  <section class="section" id="contact">
-    <h3>Contact</h3>
-    <p>
-      Get in touch to book a session or schedule a tour. Email us at contact@studioharmony.com or call (555) 123-4567.
-    </p>
+    <div class="slideshow-container">
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="assets/stio.jpg" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="assets/stio.jpg" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="assets/stio.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Studio Harmony. All rights reserved.
+    Get in touch to book a session or schedule a tour. Email us at contact@studioharmony.com or call (555) 123-4567.
   </footer>
 </body>
 </html>
